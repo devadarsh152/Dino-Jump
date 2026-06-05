@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dcn1c4ro4i3b0"]
+
+[ext_resource type="Texture2D" uid="uid://d3poi8u0talv4" path="res://assets/tree.png" id="1_brfkd"]
+[ext_resource type="Script" uid="uid://da01g0lo0j1gy" path="res://scripts/tree.gd" id="2_nnvrw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vplca"]
+radius = 12.245154
+
+[node name="Sprite2D" type="Sprite2D" unique_id=570906463]
+position = Vector2(-4.500005, 37.000008)
+scale = Vector2(3.5937498, 4.9375005)
+texture = ExtResource("1_brfkd")
+script = ExtResource("2_nnvrw")
+
+[node name="trunk" type="Area2D" parent="." unique_id=148471554]
+
+[node name="trunk_shape" type="CollisionShape2D" parent="trunk" unique_id=1448242164]
+position = Vector2(0.13913172, -2.6329126)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("CircleShape2D_vplca")
+
+[node name="speed_timer" type="Timer" parent="." unique_id=171210257]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="trunk" to="." method="_on_trunk_body_entered"]
+[connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
